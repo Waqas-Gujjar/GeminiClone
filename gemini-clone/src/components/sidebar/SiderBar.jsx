@@ -6,55 +6,88 @@ import { PiNotePencilBold } from "react-icons/pi";
 import { MdMoreTime } from "react-icons/md";
 import { MdSettings } from "react-icons/md";
 
+
+
+
+import { FaChevronDown } from "react-icons/fa";
+
 const SiderBar = () => {
   return (
-    <div className="flex flex-col h-screen w-90 font-sans  text-[#a9aaaa] bg-[#282A2C] justify-between">
+    <div className="flex flex-col justify-between min-h-screen w-[270px] bg-[#282A2C] text-[#a9aaaa] font-sans">
       {/* Top Section */}
       <div>
-  {/* Header */}
-  <div className="flex items-center justify-between px-5 py-4">
-    <div className="flex items-center text-[#6a6d6e] rounded-full hover:bg-gray-700 cursor-pointer p-2">
-      <GiHamburgerMenu size="20px" />
-    </div>
-    <div className="flex items-center rounded-full hover:bg-gray-700 cursor-pointer p-2">
-      <IoIosSearch size="20px" />
-    </div>
-  </div>
+        {/* Header */}
+        <div className="flex items-center justify-between px-4 py-4">
+          <div className="p-2 rounded-full hover:bg-gray-700 cursor-pointer">
+            <GiHamburgerMenu size={20} />
+          </div>
+          <div className="p-2 rounded-full hover:bg-gray-700 cursor-pointer">
+            <IoIosSearch size={20} />
+          </div>
+        </div>
 
-  {/* Menu Items */}
-  <div className="flex flex-col px-5 gap-4">
-    {/* New Chat */}
-    <div className="flex items-center gap-2 hover:bg-gray-700 cursor-pointer p-2 rounded-full transition-all duration-200 ease-in-out">
-      <PiNotePencilBold size="20px" />
-      <p className="text-sm font-semibold ml-3">New Chat</p>
-    </div>
+        {/* New Chat */}
+        <div className="px-4">
+          <div className="flex items-center gap-3 p-2 rounded-full hover:bg-gray-700 cursor-pointer transition">
+            <PiNotePencilBold size={20} />
+            <span className="text-sm font-semibold">New chat</span>
+          </div>
+        </div>
 
-    {/* Explore Gems */}
-    <div className="flex items-center gap-2 hover:bg-gray-700 cursor-pointer p-2 rounded-full transition-all duration-200 ease-in-out">
-      <MdMoreTime size="20px" />
-      <p className="text-sm font-semibold ml-3">Explore Gems</p>
-    </div>
+        {/* Gems Section */}
+        <div className="px-4 mt-6">
+          <h2 className="text-sm font-semibold text-gray-400 mb-2">Gems</h2>
 
-    {/* Recent Section */}
-    <div className="flex flex-col gap-3 mt-4">
-      <h1 className="text-sm font-semibold text-gray-400 px-2">Recent</h1>
+          {/* Selected Gem */}
+          <div className="flex items-center gap-3 bg-[#40495c] text-white p-2 rounded-full cursor-pointer">
+            <div className="h-6 w-6 rounded-full bg-[#1c5c9e] flex items-center justify-center text-sm font-semibold">
+              B
+            </div>
+            <span className="text-sm font-medium">Bug</span>
+          </div>
 
-      {/* Only Text (No Icon) */}
-      <div className="hover:bg-gray-700 cursor-pointer p-2 rounded-full transition-all duration-200 ease-in-out">
-        <p className="text-sm font-semibold text-gray-300 ml-1">Create an app in React</p>
+          {/* Explore Gems */}
+          <div className="flex items-center gap-3 mt-3 hover:bg-gray-700 p-2 rounded-full cursor-pointer transition">
+            <MdMoreTime size={20} />
+            <span className="text-sm font-medium">Explore Gems</span>
+          </div>
+        </div>
+
+        {/* Recent Section */}
+        <div className="px-4 mt-6">
+          <h2 className="text-sm font-semibold text-gray-400 mb-2">Recent</h2>
+
+          {[
+            "Processing Message: Stand ...",
+            "Smart Value, Explained Con...",
+            "WhatsApp request, decline...",
+            "Ready for LaTeX Assistance",
+            "Build Real-time Chat App API",
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="text-sm text-gray-300 truncate hover:bg-gray-700 p-2 rounded-full cursor-pointer transition"
+              title={item}
+            >
+              {item}
+            </div>
+          ))}
+
+          {/* Show more */}
+          <div className="flex items-center gap-2 text-sm text-gray-400 mt-2 hover:bg-gray-700 p-2 rounded-full cursor-pointer w-fit">
+            <span>Show more</span>
+            <FaChevronDown size={14} />
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
-{/* Bottom Section */}
-<div className="flex flex-col px-5 gap-4 pb-6">
-  <div className="flex items-center gap-2 hover:bg-gray-700 cursor-pointer p-2 rounded-full transition-all duration-200 ease-in-out">
-    <MdSettings size="20px" />
-    <p className="text-sm font-semibold ml-3">Settings & Help</p>
-  </div>
-</div>
-
+      {/* Bottom: Settings */}
+      <div className="px-4 mb-6">
+        <div className="flex items-center gap-3 hover:bg-gray-700 p-2 rounded-full cursor-pointer transition">
+          <MdSettings size={20} />
+          <span className="text-sm font-medium">Settings & help</span>
+        </div>
+      </div>
     </div>
   );
 };

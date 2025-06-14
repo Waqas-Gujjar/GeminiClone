@@ -8,11 +8,11 @@ import { FaCaretDown } from "react-icons/fa";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between  w-full px-6 py-3 ">
+    <div className="flex justify-between  w-full p-3 ">
       {/* Left Side: Title + Model version */}
       <div className="gap-2 ">
         <h1 className="text-white text-xl font-medium">Gemini</h1>
-        <div className="flex cursor-pointer items-center  gap-3 mt-1 px-4 py-[3px] bg-[#2a2a2a] rounded-full text-sm font-semibold text-gray-400">
+        <div className="flex cursor-pointer items-center  gap-3 mt-1 px-3 py-[3px] bg-[#2a2a2a] rounded-full text-sm font-semibold text-gray-400">
           <span>2.5 Flash</span>
           <FaCaretDown className="text-gray-500" size={16} />
         </div>
