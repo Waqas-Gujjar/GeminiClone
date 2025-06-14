@@ -18,7 +18,7 @@ const ChatBubble = ({ text, sender }) => {
    </div> 
       {/* Message Bubble */}
       <div
-        className={` px-10 mr-30   py-5 text-sm leading-relaxed rounded-full ${
+        className={` px-10 mr-30   py-5 text-sm leading-relaxed rounded-4xl ${
           isUser
             ? "bg-[#2d2f31] text-white rounded-br-none"
             : " text-gray-200 rounded-bl-none"
