@@ -7,9 +7,8 @@ import { BiAddToQueue } from "react-icons/bi";
 import { IoMdMic } from "react-icons/io";
 import { GEMINI_API_KEY, GEMINI_API_URL } from "../../../context";
 
-const Main = () => {
+const Main = ({ chat, setChat }) => {
   const [askQuestion, setAskQuestion] = useState("");
-  const [chat, setChat] = useState([]);
   const [loading, setLoading] = useState(false);
   const chatEndRef = useRef(null);
 
@@ -17,7 +16,8 @@ const Main = () => {
     e.preventDefault();
     if (!askQuestion.trim()) return;
 
-    setChat((prev) => [...prev, { text: askQuestion, sender: "user" }]);
+    const newMessage = { text: askQuestion, sender: "user" };
+    setChat((prev) => [...prev, newMessage]);
     setAskQuestion("");
     setLoading(true);
 
@@ -62,6 +62,11 @@ const Main = () => {
     setLoading(false);
   };
 
+  const handleNewChat = () => {
+    setChat([]);
+    setAskQuestion("");
+  };
+
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [chat, loading]);
@@ -91,7 +96,7 @@ const Main = () => {
       </div>
 
       {/* Input Section */}
-      <div className="px-6 py-4  bg-[#1a1b1c]">
+      <div className="px-6 py-4 bg-[#1a1b1c]">
         <div className="max-w-4xl mx-auto w-full">
           <form
             onSubmit={handleSubmit}
@@ -111,6 +116,7 @@ const Main = () => {
                 <FaPlus
                   size={20}
                   className="hover:bg-gray-700 p-1 rounded-full cursor-pointer"
+                  onClick={handleNewChat}
                 />
                 <div className="flex items-center gap-1 cursor-pointer hover:text-white">
                   <TbWorldSearch size={20} />
